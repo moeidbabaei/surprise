@@ -1,165 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>دوست دارم مامانی</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box
 }
 
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#01030b;
+  font-family:Tahoma,Arial,sans-serif
+}
+
+.scene{
+  position:fixed;
+  inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(92,65,150,.35), transparent 28%),
-    radial-gradient(circle at 80% 70%, rgba(30,80,150,.25), transparent 30%),
-    linear-gradient(145deg, #020314, #080a2b 55%, #01020d);
-  font-family: Tahoma, Arial, sans-serif;
+    radial-gradient(
+      ellipse at 50% 52%,
+      rgba(20,85,55,.38),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #01030c,
+      #031a16 58%,
+      #010207
+    )
 }
 
-.stars {
-  position: fixed;
-  inset: 0;
+.v{
+  position:absolute;
+  inset:-5%;
+  box-shadow:inset 0 0 180px 55px #000;
+  z-index:20
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+
   background-image:
-    radial-gradient(2px 2px at 10% 20%, white, transparent),
-    radial-gradient(1.5px 1.5px at 25% 75%, white, transparent),
-    radial-gradient(2px 2px at 45% 30%, white, transparent),
-    radial-gradient(1px 1px at 65% 15%, white, transparent),
-    radial-gradient(2px 2px at 82% 35%, white, transparent),
-    radial-gradient(1.5px 1.5px at 92% 80%, white, transparent),
-    radial-gradient(1px 1px at 55% 88%, white, transparent),
-    radial-gradient(1.5px 1.5px at 35% 50%, white, transparent);
-  opacity: .8;
+    radial-gradient(2px 2px at 8% 18%,#fff,transparent),
+    radial-gradient(1px 1px at 18% 42%,#fff,transparent),
+    radial-gradient(2px 2px at 27% 12%,#fff,transparent),
+    radial-gradient(1px 1px at 34% 70%,#fff,transparent),
+    radial-gradient(2px 2px at 47% 26%,#fff,transparent),
+    radial-gradient(1px 1px at 55% 78%,#fff,transparent),
+    radial-gradient(2px 2px at 68% 17%,#fff,transparent),
+    radial-gradient(1px 1px at 74% 55%,#fff,transparent),
+    radial-gradient(2px 2px at 88% 27%,#fff,transparent);
+
+  animation:t 3s ease-in-out infinite alternate
 }
 
-.message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(.7);
-  color: white;
-  font-size: clamp(28px, 7vw, 72px);
-  font-weight: bold;
-  text-shadow:
-    0 0 8px #fff,
-    0 0 20px #a98cff,
-    0 0 45px #6d4aff;
-  opacity: 0;
-  white-space: nowrap;
-  animation: reveal 1.8s ease 3.8s forwards;
-}
+/* ماه */
+.moon{
+  position:absolute;
+  right:9%;
+  top:10%;
 
-.comet {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: white;
+  width:85px;
+  height:85px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      #fff,
+      #eef1ff 40%,
+      #bbc5e8 72%,
+      #7783a8
+    );
+
   box-shadow:
-    0 0 8px 3px white,
-    0 0 20px 8px #b8a4ff,
-    0 0 45px 14px rgba(125,100,255,.65);
+    0 0 30px #dce6ff,
+    0 0 90px #7891ff;
 
-  left: -80px;
-  top: 25%;
-
-  animation: fly 4s cubic-bezier(.15,.65,.35,1) forwards;
+  opacity:.72
 }
 
-.comet::before {
-  content: "";
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  width: 260px;
-  height: 5px;
-  transform: translateY(-50%);
-  background: linear-gradient(
-    to left,
-    rgba(255,255,255,.95),
-    rgba(170,145,255,.45),
-    transparent
-  );
-  filter: blur(2px);
-  border-radius: 50%;
-}
+/* شهاب سبز */
+.comet{
+  position:absolute;
 
-.comet::after {
-  content: "✦";
-  position: absolute;
-  left: -15px;
-  top: -20px;
-  color: white;
-  font-size: 18px;
-  animation: sparkle .7s infinite alternate;
-}
+  left:-120px;
+  top:18%;
 
-.heart {
-  position: absolute;
-  bottom: 9%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #f7eaff;
-  font-size: 28px;
-  opacity: 0;
+  width:26px;
+  height:26px;
+
+  border-radius:50%;
+
+  background:#39ff14;
+
+  z-index:8;
+
+  box-shadow:
+    0 0 5px 2px #39ff14,
+    0 0 18px 7px #39ff14,
+    0 0 45px 18px #00ff66,
+    0 0 90px 35px rgba(0,255,100,.45);
+
   animation:
-    heartIn 1s ease 5s forwards,
-    pulse 1.5s ease-in-out 6s infinite;
+    fly 5.2s cubic-bezier(.16,.67,.27,1) forwards
 }
 
-@keyframes fly {
-  0% {
-    left: -80px;
-    top: 18%;
-    transform: rotate(-10deg) scale(.8);
+/* رد سبز شهاب */
+.comet:before{
+  content:"";
+
+  position:absolute;
+
+  right:7px;
+  top:50%;
+
+  width:470px;
+  height:12px;
+
+  transform:translateY(-50%);
+
+  border-radius:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0,255,80,.15),
+      rgba(80,255,140,.7),
+      #39ff14
+    );
+
+  filter:blur(3px);
+
+  box-shadow:
+    0 0 24px #39ff14
+}
+
+/* ذرات نور */
+.comet:after{
+  content:"✦ · ✧ · ✦ ·";
+
+  position:absolute;
+
+  right:80px;
+  top:-42px;
+
+  width:360px;
+
+  color:#baffc0;
+
+  letter-spacing:22px;
+  font-size:18px;
+
+  opacity:.8;
+
+  animation:
+    s .8s ease-in-out infinite alternate
+}
+
+/* متن */
+.msg{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%)
+    scale(.82);
+
+  color:#fff;
+
+  white-space:nowrap;
+
+  font-size:clamp(28px,7vw,72px);
+
+  font-weight:bold;
+
+  opacity:0;
+
+  z-index:10;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 16px #fff,
+    0 0 35px #62ff9a,
+    0 0 75px #00ff66;
+
+  animation:
+    r 1.7s ease 4.2s forwards,
+    g 3s ease-in-out 5.9s infinite
+}
+
+/* خط نور زیر متن */
+.line{
+  position:absolute;
+
+  left:50%;
+  top:57%;
+
+  transform:translateX(-50%);
+
+  width:0;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #fff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 15px #62ff9a,
+    0 0 35px #00ff66;
+
+  animation:
+    l 1.5s ease 5s forwards
+}
+
+/* فلش سینمایی */
+.flash{
+  position:absolute;
+  inset:0;
+
+  background:#fff;
+
+  opacity:0;
+
+  z-index:15;
+
+  animation:
+    f .35s ease 4.85s
+}
+
+/* حرکت شهاب */
+@keyframes fly{
+
+  0%{
+    left:-120px;
+    top:16%;
+    transform:rotate(-11deg) scale(.7)
   }
 
-  55% {
-    left: 48%;
-    top: 48%;
-    transform: rotate(-10deg) scale(1.15);
+  48%{
+    left:45%;
+    top:43%;
+    transform:rotate(-11deg) scale(1.25)
   }
 
-  100% {
-    left: 115%;
-    top: 76%;
-    transform: rotate(-10deg) scale(.75);
+  100%{
+    left:120%;
+    top:76%;
+    transform:rotate(-11deg) scale(.65)
   }
 }
 
-@keyframes reveal {
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+/* ظاهر شدن متن */
+@keyframes r{
+
+  0%{
+    opacity:0;
+    transform:
+      translate(-50%,-50%)
+      scale(.55);
+
+    filter:blur(12px)
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+
+    filter:blur(0)
   }
 }
 
-@keyframes heartIn {
-  to {
-    opacity: 1;
+/* درخشش متن */
+@keyframes g{
+
+  50%{
+    text-shadow:
+      0 0 8px #fff,
+      0 0 22px #fff,
+      0 0 50px #62ff9a,
+      0 0 100px #00ff66
   }
 }
 
-@keyframes pulse {
-  50% {
-    transform: translateX(-50%) scale(1.2);
+/* خط نور */
+@keyframes l{
+
+  to{
+    width:min(72vw,700px);
+    opacity:.7
   }
 }
 
-@keyframes sparkle {
-  from {
-    opacity: .4;
-    transform: scale(.7) rotate(0deg);
+/* فلش */
+@keyframes f{
+
+  35%{
+    opacity:.12
+  }
+}
+
+/* ذرات */
+@keyframes s{
+
+  from{
+    opacity:.35;
+    transform:translateX(0)
   }
 
-  to {
-    opacity: 1;
-    transform: scale(1.3) rotate(20deg);
+  to{
+    opacity:1;
+    transform:translateX(-18px)
+  }
+}
+
+/* چشمک ستاره‌ها */
+@keyframes t{
+
+  to{
+    opacity:.5
+  }
+}
+
+/* موبایل */
+@media(max-width:600px){
+
+  .moon{
+    width:60px;
+    height:60px
+  }
+
+  .comet:before{
+    width:300px
+  }
+
+  .msg{
+    font-size:clamp(25px,8vw,46px)
   }
 }
 </style>
@@ -167,16 +361,24 @@ html, body {
 
 <body>
 
-<div class="stars"></div>
+<div class="scene">
 
-<div class="comet"></div>
+  <div class="stars"></div>
 
-<div class="message">
-  دوست دارم مامانی ❤️
-</div>
+  <div class="moon"></div>
 
-<div class="heart">
-  ✦ ✧ ✦
+  <div class="comet"></div>
+
+  <div class="msg">
+    عاشقتم گردنم بگیر مامانی ❤️
+  </div>
+
+  <div class="line"></div>
+
+  <div class="flash"></div>
+
+  <div class="v"></div>
+
 </div>
 
 </body>
